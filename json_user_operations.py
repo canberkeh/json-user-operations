@@ -31,6 +31,7 @@ class UserRepository:
             print(self.users)
         else:
             file = open('users.json', 'w+')
+            print("users.json file created")
 
     def register(self, user: User):
         self.users.append(user)
@@ -92,12 +93,9 @@ while True:
                 username = input('Username : ')
                 password = getpass('Password : ')
                 repository.login(username, password)
-
-        elif choice == "3":
+        elif choice == "3":#logout
             repository.logout()
-            #logout
-        elif choice == "4":
+        elif choice == "4":#display username
             repository.display()
-            #display username
         else:
             print("Wrong choice ! 1-4 ")
