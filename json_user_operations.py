@@ -4,6 +4,7 @@ User register, login, logout, display username operations using json
 from getpass import getpass
 import json
 import os
+
 class User:
     def __init__(self, username, password, email):
         self.username = username
@@ -15,8 +16,6 @@ class UserRepository:
         self.users = []
         self.is_logged_in = False
         self.current_user = {}
-
-        #load users from .json file
         self.load_users()
 
     def load_users(self):
@@ -28,8 +27,10 @@ class UserRepository:
                     new_user = User(username = user['username'], password= user['password'], email = user['email'])
                     self.users.append(new_user)
             print(self.users)
+        else:
+            return "users.json"
 
-    def register(self, user : User):#dışarıdan gelen user bilgisinin tipinin User olmasını istiyorum.
+    def register(self, user: User):
         self.users.append(user)
         self.save_to_file()
         print("User registered")
