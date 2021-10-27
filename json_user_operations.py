@@ -7,12 +7,14 @@ import os
 
 class User:
     def __init__(self, username, password, email):
+    # Initializes user object
         self.username = username
         self.password = password
         self.email = email
 
 class UserRepository:
     def __init__(self):
+    # Initializes user repository
         self.users = []
         self.is_logged_in = False
         self.current_user = {}
@@ -28,7 +30,7 @@ class UserRepository:
                     self.users.append(new_user)
             print(self.users)
         else:
-            return "users.json"
+            file = open('users.json', 'w+')
 
     def register(self, user: User):
         self.users.append(user)
